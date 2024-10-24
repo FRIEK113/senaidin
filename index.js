@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
-const port = 2222;
+const port = 3000;
 const db = new sqlite3.Database('Database.sqlite');
 
 app.use(express.json());
@@ -26,8 +26,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + "/pages/login.html"));
 });
 // rota enviar
-app.post('/enviar', (req, res) => {
+app.post('/validar_cadastro', (req, res) => {
     let sql = "INSERT INTO CADASTROS (NOME, EMAIL, LINKEDIN, SENHA) VALUES (?, ?, ?, ?)"
+
+    db.run(sql, [req.body.nome, req.body.email, req.body.linkedin, req.body.senha], (err) =>{
+        if (err) res.send(err)
+    })
 })
 
 // rota cadastro

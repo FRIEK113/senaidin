@@ -12,7 +12,7 @@
                 nome: document.getElementById('nome').value,
                 email: document.getElementById('email').value,
                 linkedin: document.getElementById('linkedin').value,
-                senha: document.getElementById('senha').value,
+                senha: document.getElementById('senha').value
             }
 
             let options = {
@@ -21,7 +21,7 @@
                 body: JSON.stringify(info),
             }
 
-            let url = "/enviar";
+            let url = "/validar_cadastro";
             fetch(url, options)
             .then((response) => response.text())
             .then((resultado) =>{
