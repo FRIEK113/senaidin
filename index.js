@@ -31,6 +31,7 @@ app.post('/validar_cadastro', (req, res) => {
 
     db.run(sql, [req.body.nome, req.body.email, req.body.linkedin, req.body.senha], (err) =>{
         if (err) res.send(err)
+        else res.send("Dados inseridos com sucesso!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     })
 })
 
