@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+
+    <script>
+        function enviar() {
+            let info = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                linkedin: document.getElementById('linkedin').value,
+                senha: document.getElementById('senha').value,
+            }
+
+            let options = {
+                method: "POST",
+                headers: { "Content-Type": "application/JSON" },
+                body: JSON.stringify(info),
+            }
+
+            let url = "/enviar";
+            fetch(url, options)
+            .then((response) => response.text())
+            .then((resultado) =>{
+                alert(resultado);
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <section class="logo">
+            <div class="imagem">
+                <img src="imagens/Logo_senaidin.png" alt="Logo" style="height: 250px;">
+            </div>
+        </section>
+        <section class="cadastro">
+            <div class="cadastro">
+                <h1 id="cadastro">CADASTRE-SE</h1>
+                <P>NOME COMPLETO:</P>
+                <input type="text" id="nome">
+                <p>EMAIL:</p>
+                <input type="email" name="email" id="email">
+                <p>LINKEDIN</p>
+                <input type="text" name="linkedin" id="linkedin">
+                <p>IMAGEM DE PERFIL:</p>
+                <input type="file" name="imagem" id="imagem">
+                <p>SENHA:</p>
+                <input type="password" name="senha" id="senha">
+                <p>REPITA A SENHA:</p>
+                <input type="password" name="senha" id="repita_senha">
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
