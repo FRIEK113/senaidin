@@ -27,12 +27,14 @@ app.get('/', (req, res) => {
 });
 // rota enviar
 app.post('/validar_cadastro', (req, res) => {
+
     let sql = "INSERT INTO USUARIOS (NOME, EMAIL, LINKEDIN, SENHA) VALUES (?, ?, ?, ?)"
 
     db.run(sql, [req.body.nome, req.body.email, req.body.linkedin, req.body.senha], (err) =>{
         if (err) console.log(err)
         else res.send("Dados inseridos com sucesso!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     })
+    
 })
 
 // rota cadastro
