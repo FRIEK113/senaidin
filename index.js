@@ -10,8 +10,8 @@ app.use(express.static(path.join(__dirname, "pages")));
 
 // criando banco de dados
 function Tabela() {
-    let sql = 
-    "CREATE TABLE CADASTROS('ID INTEGER PRIMARY KEY AUTOINCREMENT', 'NOME VARCHAR(100)', 'EMAIL VARCHAR(100)', 'LINKEDIN(500)', 'SENHA(100)')";
+    
+    let sql = "CREATE TABLE CADASTROS('ID INTEGER PRIMARY KEY AUTOINCREMENT', 'NOME VARCHAR(100)', 'EMAIL VARCHAR(100)', 'LINKEDIN(500)', 'SENHA(100)')";
 
     db.run(sql, (err) => {
         if (err) console.log(err);
@@ -22,7 +22,7 @@ function Tabela() {
 // Tabela();
 
 // rota padrão
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + "/pages/login.html"));
 });
 // rota enviar
@@ -31,7 +31,7 @@ app.post('/enviar', (req, res) => {
 })
 
 // rota cadastro
-app.get('/cadastro', (req, res) =>{
+app.get('/cadastro', (req, res) => {
     res.sendFile(path.join(__dirname + "/pages/cadastro.html"))
 })
 
