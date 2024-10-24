@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, "pages")));
 // criando banco de dados
 function Tabela() {
     
-    let sql = "CREATE TABLE CADASTROS('ID INTEGER PRIMARY KEY AUTOINCREMENT', 'NOME VARCHAR(100)', 'EMAIL VARCHAR(100)', 'LINKEDIN(500)', 'SENHA(100)')";
+    let sql = "CREATE TABLE USUARIOS( ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME VARCHAR(100), EMAIL VARCHAR(100), LINKEDIN VARCHAR(500), SENHA VARCHAR(100) );";
 
     db.run(sql, (err) => {
         if (err) console.log(err);
@@ -27,10 +27,10 @@ app.get('/', (req, res) => {
 });
 // rota enviar
 app.post('/validar_cadastro', (req, res) => {
-    let sql = "INSERT INTO CADASTROS (NOME, EMAIL, LINKEDIN, SENHA) VALUES (?, ?, ?, ?)"
+    let sql = "INSERT INTO USUARIOS (NOME, EMAIL, LINKEDIN, SENHA) VALUES (?, ?, ?, ?)"
 
     db.run(sql, [req.body.nome, req.body.email, req.body.linkedin, req.body.senha], (err) =>{
-        if (err) res.send(err)
+        if (err) console.log(err)
         else res.send("Dados inseridos com sucesso!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     })
 })
